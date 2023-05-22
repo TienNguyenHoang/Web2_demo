@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 10, 2023 lúc 09:45 AM
+-- Thời gian đã tạo: Th5 22, 2023 lúc 10:30 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.0.25
 
@@ -51,7 +51,9 @@ INSERT INTO `chi_tiet_don_hang` (`id_donhang`, `sku_id`, `so_luong`, `don_gia`) 
 (9, 8, 1, 0),
 (9, 9, 1, 0),
 (10, 8, 1, 0),
-(10, 9, 1, 0);
+(10, 9, 1, 0),
+(11, 54, 2, 15000000),
+(11, 55, 2, 35000000);
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,10 @@ INSERT INTO `chi_tiet_gio_hang` (`id_gio_hang`, `id_sku`, `quantity`) VALUES
 (4, 2, 1),
 (4, 3, 1),
 (4, 8, 1),
-(4, 10, 1);
+(4, 10, 1),
+(4, 55, 1),
+(7, 52, 1),
+(7, 53, 1);
 
 -- --------------------------------------------------------
 
@@ -353,7 +358,9 @@ INSERT INTO `ct_tt_bien_the_sp` (`skus_id`, `id_thuoc_tinh`, `id_gia_tri_tt`, `i
 (55, 1, 9, 12),
 (55, 2, 11, 12),
 (55, 3, 6, 12),
-(55, 4, 10, 12);
+(55, 4, 10, 12),
+(56, 1, 2, 39),
+(56, 2, 3, 39);
 
 -- --------------------------------------------------------
 
@@ -407,12 +414,13 @@ CREATE TABLE `don_hang` (
 INSERT INTO `don_hang` (`id`, `id_tk`, `created_date`, `ten_nguoi_nhan`, `dia_chi`, `sdt`, `tong_tien`, `status`) VALUES
 (1, 2, '2023-05-07 05:33:51', 'em iu', 'Tp.HCM', '0862863753', 54400000, 1),
 (4, 2, '2023-05-07 06:47:06', 'em iu', 'Tp.HCM', '0862863753', 26450000, 1),
-(5, 2, '2023-05-07 06:49:36', 'em iu', 'Tp.HCM', '0862863753', 27950000, 0),
+(5, 2, '2023-05-07 06:49:36', 'em iu', 'Tp.HCM', '0862863753', 27950000, 1),
 (6, 2, '2023-05-07 06:52:03', 'em iu', 'Tp.HCM', '0862863753', 48400000, 0),
 (7, 2, '2023-05-07 06:57:56', 'em iu', 'Tp.HCM', '0862863753', 48400000, 0),
 (8, 2, '2023-05-07 06:59:05', 'em iu', 'Tp.HCM', '0862863753', 48400000, 0),
 (9, 2, '2023-05-07 07:01:06', 'em iu', 'Tp.HCM', '0862863753', 48400000, 0),
-(10, 2, '2023-05-07 07:03:16', 'em iu', 'Tp.HCM', '0862863753', 48400000, 0);
+(10, 2, '2023-05-07 07:03:16', 'em iu', 'Tp.HCM', '0862863753', 48400000, 1),
+(11, 6, '2023-05-10 10:53:47', 'thai', 'hcm', '0362863753', 100000000, 1);
 
 -- --------------------------------------------------------
 
@@ -461,7 +469,8 @@ CREATE TABLE `gio_hang` (
 
 INSERT INTO `gio_hang` (`id`, `id_tk`) VALUES
 (4, 2),
-(5, 5);
+(5, 5),
+(7, 6);
 
 -- --------------------------------------------------------
 
@@ -524,35 +533,36 @@ INSERT INTO `san_pham` (`id`, `ten_sp`, `description`, `img_path`, `in_stock`, `
 (5, 'HP Omen', 'Mô tả sản phẩm test', '644d15318b4dd.jpg', 1, 3, '2023-04-30 11:15:48', '2023-04-30 11:24:12'),
 (6, 'Levono Legion 5', 'Mô tả sản phẩm test', '644d160976dad.jpg', 1, 4, '2023-04-30 11:16:04', '2023-04-30 11:24:23'),
 (8, 'Acer Aspire 5', 'Mô tả sản phẩm test', '644d10c71f61d.png', 1, 1, '2023-04-30 11:14:32', '2023-04-30 11:24:34'),
-(9, 'LaptopASUSTUFGamingFX', 'LaptopASUSTUFGamingFX', '645b40f3c25d5.jpg', 1, 5, '2023-04-30 11:16:37', '2023-05-10 14:00:03'),
-(11, 'LaptopLenovoIdeapadGaming', 'LaptopLenovoIdeapadGaming', '645b412569cf7.jpg', 1, 4, '2023-04-30 11:34:18', '2023-05-10 14:00:53'),
-(12, 'AcerAspire3', 'AcerAspire3', '645b354dc0aef.png', 1, 1, '2023-05-10 13:10:21', '2023-05-10 13:10:21'),
-(13, 'AcerAspire5', 'AcerAspire5', '645b35abdf4a6.png', 1, 1, '2023-05-10 13:11:55', '2023-05-10 13:11:55'),
-(14, 'AcerAspireA5', 'AcerAspireA5', '645b35cd32a0a.jpg', 1, 1, '2023-05-10 13:12:29', '2023-05-10 13:12:29'),
-(15, 'AcerGamingAspire7', 'AcerGamingAspire7', '645b35ed95f4d.jpg', 1, 1, '2023-05-10 13:13:01', '2023-05-10 13:13:01'),
-(16, 'AcerGamingNitro5', 'AcerGamingNitro5', '645b363620a87.jpg', 1, 1, '2023-05-10 13:14:14', '2023-05-10 13:14:14'),
-(17, 'AcerGamingPredatorHelios', 'AcerGamingPredatorHelios', '645b36bb3086b.png', 1, 1, '2023-05-10 13:16:27', '2023-05-10 13:16:27'),
-(18, 'DellGamingG555', 'DellGamingG555', '645b36e7c1b11.jpg', 1, 2, '2023-05-10 13:17:11', '2023-05-10 13:17:11'),
-(19, 'DellGamingG1555', 'DellGamingG1555', '645b371796177.jpg', 1, 2, '2023-05-10 13:17:59', '2023-05-10 13:17:59'),
-(20, 'DellInspirionN5515', 'DellInspirionN5515', '645b373ce69c4.jpg', 1, 2, '2023-05-10 13:18:36', '2023-05-10 13:18:36'),
-(21, 'DellInspiron3520', 'DellInspiron3520', '645b375d7077e.png', 1, 2, '2023-05-10 13:19:09', '2023-05-10 13:19:09'),
-(22, 'DellInspiron7306', 'DellInspiron7306', '645b377d7fc3f.jpg', 1, 2, '2023-05-10 13:19:41', '2023-05-10 13:19:41'),
-(23, 'laptop_asus_tuf_gaming_f15', 'laptop_asus_tuf_gaming_f15', '645b37a99b86c.jpg', 1, 5, '2023-05-10 13:20:25', '2023-05-10 13:20:25'),
-(24, 'LaptopAsusROGStrixScar', 'LaptopAsusROGStrixScar', '645b37cc8714d.jpg', 1, 5, '2023-05-10 13:21:00', '2023-05-10 13:21:00'),
-(25, 'LaptopAsusTUFA', 'LaptopAsusTUFA', '645b37f2a444e.jpg', 1, 5, '2023-05-10 13:21:38', '2023-05-10 13:21:38'),
-(26, 'LaptopASUSZenBookFlip', 'LaptopASUSZenBookFlip', '645b3819972bf.jpg', 1, 5, '2023-05-10 13:22:17', '2023-05-10 13:22:17'),
-(27, 'LaptopGamingAsusROGStrixG', 'LaptopGamingAsusROGStrixG', '645b3854d8734.jpg', 1, 5, '2023-05-10 13:23:16', '2023-05-10 13:23:16'),
-(28, 'LaptopHP14SCF25', 'LaptopHP14SCF25', '645b388c3320b.jpg', 1, 3, '2023-05-10 13:24:12', '2023-05-10 13:24:12'),
-(29, 'LaptopHPEliteBook', 'LaptopHPEliteBook', '645b38afa0f9b.jpg', 1, 3, '2023-05-10 13:24:47', '2023-05-10 13:24:47'),
-(30, 'LaptopHPPavilion14', 'LaptopHPPavilion14', '645b38d83716c.jpg', 1, 3, '2023-05-10 13:25:28', '2023-05-10 13:25:28'),
-(31, 'LaptopHPVictus', 'LaptopHPVictus', '645b38f554e95.jpg', 1, 3, '2023-05-10 13:25:57', '2023-05-10 13:25:57'),
-(32, 'LaptopLenovoLegion', 'LaptopLenovoLegion', '645b3927c72e2.jpg', 1, 4, '2023-05-10 13:26:47', '2023-05-10 13:26:47'),
-(33, 'LaptopLenovoSlim7Pro', 'LaptopLenovoSlim7Pro', '645b395027ed2.jpg', 1, 4, '2023-05-10 13:27:28', '2023-05-10 13:27:28'),
-(34, 'LaptopLenovoThinkPadE15', 'LaptopLenovoThinkPadE15', '645b397195bda.jpg', 1, 4, '2023-05-10 13:28:01', '2023-05-10 13:28:01'),
-(35, 'LaptopMSIGamingAlpha17', 'LaptopMSIGamingAlpha17', '645b39943a8eb.jpg', 1, 6, '2023-05-10 13:28:36', '2023-05-10 13:28:36'),
-(36, 'LaptopMSIGamingGl75Leopard', 'LaptopMSIGamingGl75Leopard', '645b39b244463.jpg', 1, 6, '2023-05-10 13:29:06', '2023-05-10 13:29:06'),
-(37, 'LaptopMSIGamingGF63', 'LaptopMSIGamingGF63', '645b39ccae316.jpg', 1, 6, '2023-05-10 13:29:32', '2023-05-10 13:29:32'),
-(38, 'LaptopMSIModern14B11', 'LaptopMSIModern14B11', '645b39e97a139.jpg', 1, 6, '2023-05-10 13:30:01', '2023-05-10 13:30:01');
+(9, 'LaptopASUSTUFGamingFX', 'LaptopASUSTUFGamingFX', '645b50ac93fc5.jpg', 1, 5, '2023-04-30 11:16:37', '2023-05-10 15:07:08'),
+(11, 'LaptopLenovoIdeapadGaming', 'LaptopLenovoIdeapadGaming', '645b50a1630e5.jpg', 1, 4, '2023-04-30 11:34:18', '2023-05-10 15:06:57'),
+(12, 'AcerAspire3', 'AcerAspire3', '645b5097bbc17.png', 1, 1, '2023-05-10 13:10:21', '2023-05-10 15:06:47'),
+(13, 'AcerAspire5', 'AcerAspire5', '645b508b897bc.png', 1, 1, '2023-05-10 13:11:55', '2023-05-10 15:06:35'),
+(14, 'AcerAspireA5', 'AcerAspireA5', '645b507a4ff5f.jpg', 1, 1, '2023-05-10 13:12:29', '2023-05-10 15:06:18'),
+(15, 'AcerGamingAspire7', 'AcerGamingAspire7', '645b506fb91a9.jpg', 1, 1, '2023-05-10 13:13:01', '2023-05-10 15:06:07'),
+(16, 'AcerGamingNitro5', 'AcerGamingNitro5', '645b50660aed1.jpg', 1, 1, '2023-05-10 13:14:14', '2023-05-10 15:05:58'),
+(17, 'AcerGamingPredatorHelios', 'AcerGamingPredatorHelios', '645b5059bb54f.png', 1, 1, '2023-05-10 13:16:27', '2023-05-10 15:05:45'),
+(18, 'DellGamingG555', 'DellGamingG555', '645b504f9da47.jpg', 1, 2, '2023-05-10 13:17:11', '2023-05-10 15:05:35'),
+(19, 'DellGamingG1555', 'DellGamingG1555', '645b503f8d477.jpg', 1, 2, '2023-05-10 13:17:59', '2023-05-10 15:05:19'),
+(20, 'DellInspirionN5515', 'DellInspirionN5515', '645b5034eb65f.jpg', 1, 2, '2023-05-10 13:18:36', '2023-05-10 15:05:08'),
+(21, 'DellInspiron3520', 'DellInspiron3520', '645b502992327.png', 1, 2, '2023-05-10 13:19:09', '2023-05-10 15:04:57'),
+(22, 'DellInspiron7306', 'DellInspiron7306', '645b501ecee88.jpg', 1, 2, '2023-05-10 13:19:41', '2023-05-10 15:04:46'),
+(23, 'laptop_asus_tuf_gaming_f15', 'laptop_asus_tuf_gaming_f15', '645b50144ad10.jpg', 1, 5, '2023-05-10 13:20:25', '2023-05-10 15:04:36'),
+(24, 'LaptopAsusROGStrixScar', 'LaptopAsusROGStrixScar', '645b5008951a8.jpg', 1, 5, '2023-05-10 13:21:00', '2023-05-10 15:04:24'),
+(25, 'LaptopAsusTUFA', 'LaptopAsusTUFA', '645b4ffda66c6.jpg', 1, 5, '2023-05-10 13:21:38', '2023-05-10 15:04:13'),
+(26, 'LaptopASUSZenBookFlip', 'LaptopASUSZenBookFlip', '645b4ff14ab93.jpg', 1, 5, '2023-05-10 13:22:17', '2023-05-10 15:04:01'),
+(27, 'LaptopGamingAsusROGStrixG', 'LaptopGamingAsusROGStrixG', '645b4fe6bd40f.jpg', 1, 5, '2023-05-10 13:23:16', '2023-05-10 15:03:50'),
+(28, 'LaptopHP14SCF25', 'LaptopHP14SCF25', '645b4fcb92b17.jpg', 1, 3, '2023-05-10 13:24:12', '2023-05-10 15:03:23'),
+(29, 'LaptopHPEliteBook', 'LaptopHPEliteBook', '645b4faf4cdff.jpg', 1, 3, '2023-05-10 13:24:47', '2023-05-10 15:02:55'),
+(30, 'LaptopHPPavilion14', 'LaptopHPPavilion14', '645b4f9d2f8a7.jpg', 1, 3, '2023-05-10 13:25:28', '2023-05-10 15:02:37'),
+(31, 'LaptopHPVictus', 'LaptopHPVictus', '645b4f908ac4a.jpg', 1, 3, '2023-05-10 13:25:57', '2023-05-10 15:02:24'),
+(32, 'LaptopLenovoLegion', 'LaptopLenovoLegion', '645b4f7bc8985.jpg', 1, 4, '2023-05-10 13:26:47', '2023-05-10 15:02:03'),
+(33, 'LaptopLenovoSlim7Pro', 'LaptopLenovoSlim7Pro', '645b4f6a0ab81.jpg', 1, 4, '2023-05-10 13:27:28', '2023-05-10 15:01:46'),
+(34, 'LaptopLenovoThinkPadE15', 'LaptopLenovoThinkPadE15', '645b4f5a86887.jpg', 1, 4, '2023-05-10 13:28:01', '2023-05-10 15:01:30'),
+(35, 'LaptopMSIGamingAlpha17', 'LaptopMSIGamingAlpha17', '645b4f4c8fd18.jpg', 1, 6, '2023-05-10 13:28:36', '2023-05-10 15:01:16'),
+(36, 'LaptopMSIGamingGl75Leopard', 'LaptopMSIGamingGl75Leopard', '645b4f378cab3.jpg', 1, 6, '2023-05-10 13:29:06', '2023-05-10 15:00:55'),
+(37, 'LaptopMSIGamingGF63', 'LaptopMSIGamingGF63', '645b4ee94cc35.jpg', 1, 6, '2023-05-10 13:29:32', '2023-05-10 14:59:37'),
+(38, 'LaptopMSIModern14B11', 'LaptopMSIModern14B11', '645b4efc6044b.jpg', 1, 6, '2023-05-10 13:30:01', '2023-05-10 14:59:56'),
+(39, 'abc', 'test', 'default.jpg', 1, 1, '2023-05-10 16:01:33', '2023-05-10 16:01:33');
 
 -- --------------------------------------------------------
 
@@ -629,8 +639,9 @@ INSERT INTO `skus` (`id`, `sku_name`, `don_gia`, `so_luong`, `id_sp`, `in_stock`
 (51, 'MNG/i5/8G/512GB/GTX1650', 265000000, 30, 16, 1, '2023-05-10 09:09:27', '2023-05-10 09:09:27'),
 (52, 'JBN/i5/8G/512GB', 18000000, 29, 15, 1, '2023-05-10 09:09:59', '2023-05-10 09:09:59'),
 (53, 'JBM/ryzen5/8G/256GB', 18000000, 30, 14, 1, '2023-05-10 09:10:40', '2023-05-10 09:10:40'),
-(54, 'BBN/i5/4G/256GB', 15000000, 30, 13, 1, '2023-05-10 09:11:15', '2023-05-10 09:11:15'),
-(55, 'KHL/ryzen7/16G/512GB/RTX3060', 35000000, 30, 12, 1, '2023-05-10 09:12:10', '2023-05-10 09:12:10');
+(54, 'BBN/i5/4G/256GB', 15000000, 28, 13, 1, '2023-05-10 09:11:15', '2023-05-10 09:11:15'),
+(55, 'KHL/ryzen7/16G/512GB/RTX3060', 35000000, 28, 12, 1, '2023-05-10 09:12:10', '2023-05-10 09:12:10'),
+(56, 'xyz', 20, 20, 39, 1, '2023-05-10 11:03:37', '2023-05-10 11:03:37');
 
 -- --------------------------------------------------------
 
@@ -655,7 +666,8 @@ CREATE TABLE `tai_khoan` (
 INSERT INTO `tai_khoan` (`id`, `ten_tk`, `password`, `email`, `id_nhom_quyen`, `status`, `is_deleted`) VALUES
 (1, 'user', 'user', 'user@gmail.com', 1, 1, 0),
 (2, 'admin', 'admin', 'admin@gmail.com', 2, 1, 0),
-(5, 'thai', '123456', 'thai@gmail.com', 1, 1, 0);
+(5, 'thai', '123456', 'thai@gmail.com', 1, 1, 0),
+(6, 'abc', '123456', 'adas@gmail.com', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -816,7 +828,7 @@ ALTER TABLE `danh_muc`
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `gia_tri_thuoc_tinh`
@@ -828,7 +840,7 @@ ALTER TABLE `gia_tri_thuoc_tinh`
 -- AUTO_INCREMENT cho bảng `gio_hang`
 --
 ALTER TABLE `gio_hang`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `nhom_quyen`
@@ -846,19 +858,19 @@ ALTER TABLE `phieu_nhap`
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT cho bảng `skus`
 --
 ALTER TABLE `skus`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `tai_khoan`
 --
 ALTER TABLE `tai_khoan`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `thuoc_tinh`
